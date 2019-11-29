@@ -2,9 +2,14 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+function greeter(person: string) {
+  return "Hello, " + person;
+}
+
 function App() {
   return (
     <div className="App">
+      {greeter('Lucy')}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
