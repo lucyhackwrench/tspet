@@ -1,5 +1,7 @@
 import React from 'react';
 
+const petId = '1';
+
 const makeGetPetRequest = async(url = '') => {
   try {
     let response = await fetch(url, {
@@ -17,13 +19,13 @@ const makeGetPetRequest = async(url = '') => {
   }
 };
 
-class List extends React.Component {
+class Detal extends React.Component {
   state = {
     pet: {}
   };
 
   componentDidMount() {
-    makeGetPetRequest('https://virtserver.swaggerhub.com/cherries/cherries_petshop/1.0.0/pet/1')
+    makeGetPetRequest(`https://virtserver.swaggerhub.com/cherries/cherries_petshop/1.0.0/pet/${petId}`)
       .then(value => {
         this.setState({ pet: value });
       });
@@ -31,11 +33,12 @@ class List extends React.Component {
 
   render () {
     return (
-      <div className="App">
+      <div>
+        Detail:
         {Object.keys(this.state.pet).map(field => <div>{field}</div>)}
       </div>
     );
   }
 }
 
-export default List;
+export default Detal;
